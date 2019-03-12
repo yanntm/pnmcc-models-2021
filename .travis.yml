@@ -1,5 +1,5 @@
 install: true
-
+dist : xenial
 
 addons: 
   apt:
