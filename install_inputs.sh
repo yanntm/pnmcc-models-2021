@@ -11,7 +11,7 @@ mkdir INPUTS
 cd INPUTS
 wget --progress=dot:mega http://mcc.lip6.fr/2018/archives/mcc2018-input.vmdk.tar.bz2
 tar xvjf mcc2018-input.vmdk.tar.bz2
-7z e mcc2018-input.vmdk
+../7z e mcc2018-input.vmdk
 rm mcc2018-input.vmdk
 cd ..
 
