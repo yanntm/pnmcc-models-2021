@@ -1,5 +1,11 @@
 install: true
 
+
+addons: 
+  apt:
+    sources: ['ubuntu-toolchain-r-test']
+    packages: ['p7zip']
+
 script :
  - ./install_inputs.sh
     
