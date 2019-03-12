@@ -2,6 +2,10 @@
 
 set -x
 
+
+mkdir website
+cd website
+
 # grab the vmdk file image for all inputs
 mkdir INPUTS
 cd INPUTS
@@ -14,36 +18,14 @@ cd ..
 mkdir oracle
 wget --progress=dot:mega https://mcc.lip6.fr/2018/archives/raw-result-analysis.csv.zip
 unzip raw-result-analysis.csv.zip
-for line in $(cat raw-result-analysis.csv | cut -d ',' -f2,3,16 | sed 's/\? /?/g' | sort | uniq)
-do
-	
-done
+cat raw-result-analysis.csv | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
+cat raw-result-analysis.csv | grep ReachabilityDeadlock | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | sed 's/ReachabilityDeadlock/GlobalProperties/g' | ../csv_to_control.pl
+mv *.out oracle/
+rm -f raw-result-analysis.csv*
 
-
-for i in MCC-INPUTS.tgz ;
-do 
-    if [ ! -f $i ] ; then 
-	wget --progress=dot:mega http://mcc.lip6.fr/2017/archives/$i
-    fi
-    tar xzf $i
-    rm -f $i
-done
-mv BenchKit/INPUTS/* ./INPUTS/
-\rm -r BenchKit
-
-mkdir test
-cd test
-cp ../scalar.tgz .
-tar xzf scalar.tgz
-cd ../INPUTS
-for i in $(ls -1 ../test/scalar); do
-    if [ -f $i.tgz ] ;
-    then
-	tar xzf $i.tgz && cp ../test/scalar/$i/* $i/ && \rm $i.tgz && tar czf $i.tgz $i/ && rm -rf $i/ ;
-    fi
-done
+tar cvzf oracle.tar.gz  oracle/
 
 cd ..
-\rm -rf scalar/    
+
 
 
