@@ -4,7 +4,7 @@ install: true
 addons: 
   apt:
     sources: ['ubuntu-toolchain-r-test']
-    packages: ['p7zip']
+    packages: ['p7zip-full']
 
 script :
  - ./install_inputs.sh
