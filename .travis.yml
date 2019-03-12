@@ -1,11 +1,6 @@
 install: true
 dist : xenial
 
-addons: 
-  apt:
-    sources: ['ubuntu-toolchain-r-test']
-    packages: ['p7zip-full']
-
 script :
  - ./install_inputs.sh
     
