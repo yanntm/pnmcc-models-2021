@@ -25,6 +25,7 @@ mv *.out oracle/
 rm -f raw-result-analysis.csv*
 
 tar cvzf oracle.tar.gz  oracle/
+rm -rf oracle/
 
 cd ..
 
