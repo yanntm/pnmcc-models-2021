@@ -25,6 +25,9 @@ cat raw-result-analysis.csv | grep ReachabilityDeadlock | cut -d ',' -f2,3,16 | 
 mv *.out oracle/
 rm -f raw-result-analysis.csv*
 
+cd oracle
+tar xvzf ../../oracleSS.tar.gz
+cd ..
 tar cvzf oracle.tar.gz  oracle/
 rm -rf oracle/
 
