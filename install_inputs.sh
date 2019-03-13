@@ -13,6 +13,7 @@ wget --progress=dot:mega http://mcc.lip6.fr/2018/archives/mcc2018-input.vmdk.tar
 tar xvjf mcc2018-input.vmdk.tar.bz2
 ../../7z e mcc2018-input.vmdk
 rm mcc2018-input.vmdk
+rm mcc2018-input.vmdk.tar.bz2
 cd ..
 
 # create oracle files
