@@ -34,7 +34,7 @@ while (my $line = <STDIN>) {
 	  if ($#verdicts != 0) {
 		  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2018\n";
 	  } else {
-		  print OUT "FORMULA ".$prefix."-"."0"." ".$res." TECHNIQUES ORACLE2018\n";	  
+		  print OUT "FORMULA ".$prefix."-"."00"." ".$res." TECHNIQUES ORACLE2018\n";	  
 	  }
       }
       close OUT;
