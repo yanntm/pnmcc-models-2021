@@ -34,7 +34,13 @@ while (my $line = <STDIN>) {
 	  if ($#verdicts != 0) {
 		  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2018\n";
 	  } else {
-		  print OUT "FORMULA ".$prefix."-"."00"." ".$res." TECHNIQUES ORACLE2018\n";	  
+	  	if ($prefix =~ /ReachabilityDeadlock/) {
+	  		# old format for deadlocks has a single 0 as index
+	  	  print OUT "FORMULA ".$prefix."-"."0"." ".$res." TECHNIQUES ORACLE2018\n";
+	  	} else {
+	  	    # new format is more homogeneous, uses a double 00
+		  print OUT "FORMULA ".$prefix."-"."00"." ".$res." TECHNIQUES ORACLE2018\n";
+		}	  
 	  }
       }
       close OUT;
