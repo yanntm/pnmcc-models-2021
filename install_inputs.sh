@@ -12,7 +12,7 @@ wget --progress=dot:mega http://mcc.lip6.fr/archives/mcc2019-input.vmdk.tar.bz2
 tar xvjf mcc2019-input.vmdk.tar.bz2
 ../7z e mcc2019-input.vmdk
 ../ext2rd 0.img ./:INPUTS
-rm -f *
+rm -f *.vmdk 0.img *.bz2 1
 
 # create oracle files
 mkdir oracle
