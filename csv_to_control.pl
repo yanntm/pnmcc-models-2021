@@ -34,7 +34,7 @@ while (my $line = <STDIN>) {
 	  if ($#verdicts != 0) {
 		  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2019\n";
 	  } else {
-	  	if ($prefix =~ /ReachabilityDeadlock/) {
+	  	if ($prefix =~ /GlobalProperties/) {
 	  		# old format for deadlocks has a single 0 as index
 	  	  print OUT "FORMULA ".$prefix."-"."0"." ".$res." TECHNIQUES ORACLE2019\n";
 	  	} else {
