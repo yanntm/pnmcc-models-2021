@@ -1,6 +1,6 @@
 # pnmcc-models-2019
 
-Extracted models + oracles where available based on [MCC'2019](http://mcc.lip6.fr) competition.
+Extracted models + *formulas* + oracles where available based on [MCC'2019](http://mcc.lip6.fr) competition.
 
 This project automatically extracts and produces separate archives for each model of the competition, along with "oracle" files that describe the expected values as computed in "expected" by consensus among the competing tools in 2018.
 
@@ -15,7 +15,7 @@ The intent is to use these files for development and regression testing of any c
 ## Content of oracle files
 
 The oracle files are simply a "virtual" trace of a correct answer of a tool, in expected MCC format. 
-The first line defines the model instance and examination, then the results are provided with "ORACLE2018" as technique used.
+The first line defines the model instance and examination, then the results are provided with "ORACLE2019" as technique used.
 
 e.g.
 
