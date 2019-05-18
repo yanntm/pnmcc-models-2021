@@ -8,13 +8,11 @@ cd website
 
 # grab the vmdk file image for all inputs
 mkdir INPUTS
-cd INPUTS
 wget --progress=dot:mega http://mcc.lip6.fr/archives/mcc2019-input.vmdk.tar.bz2
 tar xvjf mcc2019-input.vmdk.tar.bz2
-../../7z e mcc2019-input.vmdk
-rm mcc2019-input.vmdk
-rm mcc2019-input.vmdk.tar.bz2
-cd ..
+../7z e mcc2019-input.vmdk
+../ext2rd 0.img ./:INPUTS
+rm -f *
 
 # create oracle files
 mkdir oracle
