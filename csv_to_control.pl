@@ -8,10 +8,17 @@ while (my $line = <STDIN>) {
     chomp $line;
   my @fields = split /,/, $line;
   my $modelname = @fields[0];
+  
+ # this model has a naming issue
   if ($modelname =~ /RefineWMG/) {
   	$modelname =~ s/(\d\d\d)(\d\d\d)/\1-\2/g;
   }
   my $prefix = $modelname."-".@fields[1];
+ # so does this one
+ if ($prefix =~ /HouseConstruction-PT-00020.*/) {
+  	$prefix = "HouseConstruction-PT-0020-".@fields[1];
+  }
+
   my @verdicts = split //, @fields[2];
 
    # print "Verdicts ($#verdicts) = @verdicts \n";
