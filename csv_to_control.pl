@@ -7,7 +7,11 @@ while (my $line = <STDIN>) {
     # print $line;
     chomp $line;
   my @fields = split /,/, $line;
-  my $prefix = @fields[0]."-".@fields[1];
+  my $modelname = @fields[0];
+  if ($modelname =~ /RefineWMG/) {
+  	$modelname =~ s/(\d\d\d)(\d\d\d)/\1-\2/g;
+  }
+  my $prefix = $modelname."-".@fields[1];
   my @verdicts = split //, @fields[2];
 
    # print "Verdicts ($#verdicts) = @verdicts \n";
@@ -19,7 +23,8 @@ while (my $line = <STDIN>) {
   }
   my $abbrev = @fields[1];
   $abbrev =~ s/[a-z]//g;
-  my $outff = @fields[0]."-".$abbrev.".out";
+  
+  my $outff = $modelname."-".$abbrev.".out";
 
   if (-f $outff) {
       print "Not overwriting existing oracle file $outff\n";
