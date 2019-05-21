@@ -1,0 +1,8 @@
+RERS17pb113-PT-2,GlobalProperties,T
+RERS17pb113-PT-3,GlobalProperties,T
+RERS17pb113-PT-4,GlobalProperties,T
+RERS17pb113-PT-5,GlobalProperties,T
+RERS17pb113-PT-6,GlobalProperties,T
+RERS17pb113-PT-7,GlobalProperties,T
+RERS17pb113-PT-8,GlobalProperties,T
+RERS17pb113-PT-9,GlobalProperties,T

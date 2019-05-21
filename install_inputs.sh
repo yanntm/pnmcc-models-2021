@@ -19,15 +19,16 @@ mkdir oracle
 wget --progress=dot:mega https://mcc.lip6.fr/archives/raw-result-analysis.csv.zip
 unzip raw-result-analysis.csv.zip
 cat raw-result-analysis.csv | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
+cat ../more.txt | ../csv_to_control.pl
 cat raw-result-analysis.csv | grep ReachabilityDeadlock | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | sed 's/ReachabilityDeadlock/GlobalProperties/g' | ../csv_to_control.pl
 mv *.out oracle/
-rm -f raw-result-analysis.csv*
+#rm -f raw-result-analysis.csv*
 
 cd oracle
 tar xvzf ../../oracleSS.tar.gz
 cd ..
 tar cvzf oracle.tar.gz  oracle/
-rm -rf oracle/
+#rm -rf oracle/
 
 cd ..
 
