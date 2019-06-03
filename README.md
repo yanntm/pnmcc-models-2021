@@ -37,3 +37,5 @@ The files produced by this project are created using the official archives taken
 
 We are grateful to [travis-ci](https://travis-ci.org) for freely providing build time and network bandwidth for these artifacts, as well as [GitHub](https://github.com) for hosting this repository and the generated artifacts. We thank these companies for thus contributing to the development of quality open source software.
   
+Packaging and development by Yann Thierry-Mieg, released under the terms of [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
+The source model and formulas are extracted from the [Model checking Contest](http://mcc.lip6.fr)
