@@ -14,6 +14,18 @@ tar xvjf mcc2019-input.vmdk.tar.bz2
 ../ext2rd 0.img ./:INPUTS
 rm -f *.vmdk 0.img *.bz2 1
 
+# special patch for MAPK bad formula names e.g. : MAPK-PT--GlobalProperties-0
+cd INPUTS
+tar xzf MAPK-PT-00640.tgz
+cd MAPK-PT-00640/
+for i in *.xml *.txt ; do sed -i 's/MAPK-PT--/MAPK-PT-00640-/g' $i ; done
+cd ..
+rm -f MAPK-PT-00640.tgz
+tar czf MAPK-PT-00640.tgz MAPK-PT-00640/
+rm -rf MAPK-PT-00640/
+cd ..
+
+
 # create oracle files
 mkdir oracle
 wget --progress=dot:mega https://mcc.lip6.fr/archives/raw-result-analysis.csv.zip
