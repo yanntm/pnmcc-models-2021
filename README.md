@@ -4,7 +4,7 @@ Extracted models + *formulas* + oracles where available based on [MCC'2020](http
 
 This project automatically extracts and produces separate archives for each model of the competition, along with "oracle" files that describe the expected values as computed in "expected" by consensus among the competing tools in 2018.
 
-The files are distributed here : [Generated Page](https://yanntm.github.io/pnmcc-models-2020) as 
+The files are distributed here : [Generated Page](https://yanntm.github.io/pnmcc-models-2020/index.html) as 
 
 * a set of individual model instances and formulas, packaged as a tar.gz per instance.
 * a single archive [oracle.tgz](https://yanntm.github.io/pnmcc-models-2020/oracle.tar.gz) containing all non ambiguous property verdicts (no ? question mark in the raw results of MCC2020)
