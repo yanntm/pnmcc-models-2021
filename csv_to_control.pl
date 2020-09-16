@@ -44,14 +44,14 @@ while (my $line = <STDIN>) {
 	  $res =~ s/F/FALSE/g;
 	  $res =~ s/T/TRUE/g;
 	  if ($#verdicts != 0) {
-		  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2019\n";
+		  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2020\n";
 	  } else {
 	  	if ($prefix =~ /GlobalProperties/) {
 	  		# old format for deadlocks has a single 0 as index
-	  	  print OUT "FORMULA ".$prefix."-"."0"." ".$res." TECHNIQUES ORACLE2019\n";
+	  	  print OUT "FORMULA ".$prefix."-"."0"." ".$res." TECHNIQUES ORACLE2020\n";
 	  	} else {
 	  	    # new format is more homogeneous, uses a double 00
-		  print OUT "FORMULA ".$prefix."-"."00"." ".$res." TECHNIQUES ORACLE2019\n";
+		  print OUT "FORMULA ".$prefix."-"."00"." ".$res." TECHNIQUES ORACLE2020\n";
 		}	  
 	  }
       }
