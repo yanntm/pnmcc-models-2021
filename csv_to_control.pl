@@ -13,10 +13,14 @@ while (my $line = <STDIN>) {
   if ($modelname =~ /RefineWMG/) {
   	$modelname =~ s/(\d\d\d)(\d\d\d)/\1-\2/g;
   }
+  my $examination = @fields[1];
   my $prefix = $modelname."-".@fields[1];
  # so does this one
- if ($prefix =~ /HouseConstruction-PT-00020.*/) {
-  	$prefix = "HouseConstruction-PT-0020-".@fields[1];
+ $prefix =~ s/HouseConstruction-PT-00020/HouseConstruction-PT-0020/;
+
+  if ($examination =~ /LTL.*/) {
+  	# in 2020 no examination in these formulas
+  	$prefix = $modelname ;
   }
 
   my @verdicts = split //, @fields[2];
@@ -36,24 +40,20 @@ while (my $line = <STDIN>) {
   if (-f $outff) {
       print "Not overwriting existing oracle file $outff\n";
   } else {
-      print "doing $prefix, in file $outff has ".($#verdicts)." entries \n";  
+      print "doing $prefix, in file $outff has ".($#verdicts + 1)." entries \n";  
       open OUT, "> $outff";
       print OUT "./runatest.sh ".@fields[0]." ".@fields[1] ."\n";
       for (my $i=0 ; $i <= $#verdicts ; $i++) {
-	  my $res = @verdicts[$i];   
-	  $res =~ s/F/FALSE/g;
-	  $res =~ s/T/TRUE/g;
-	  if ($#verdicts != 0) {
-		  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2020\n";
-	  } else {
-	  	if ($prefix =~ /GlobalProperties/) {
-	  		# old format for deadlocks has a single 0 as index
-	  	  print OUT "FORMULA ".$prefix."-"."0"." ".$res." TECHNIQUES ORACLE2020\n";
-	  	} else {
-	  	    # new format is more homogeneous, uses a double 00
-		  print OUT "FORMULA ".$prefix."-"."00"." ".$res." TECHNIQUES ORACLE2020\n";
-		}	  
-	  }
+		  my $res = @verdicts[$i];   
+		  $res =~ s/F/FALSE/g;
+		  $res =~ s/T/TRUE/g;
+		  if ($#verdicts != 0) {
+		  	  # ordianry formulas
+			  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2020\n";
+		  } else {
+		  	# GlobalProperties cases : formula name is simply examination
+		  	print OUT "FORMULA ".$examination." ".$res." TECHNIQUES ORACLE2020\n";
+		  }
       }
       close OUT;
   }
