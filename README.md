@@ -2,7 +2,7 @@
 
 Extracted models + *formulas* + oracles where available based on [MCC'2020](http://mcc.lip6.fr) competition.
 
-This project automatically extracts and produces separate archives for each model of the competition, along with "oracle" files that describe the expected values as computed in "expected" by consensus among the competing tools in 2018.
+This project automatically extracts and produces separate archives for each model of the competition, along with "oracle" files that describe the expected values as computed in "expected" by consensus among the competing tools in 2020.
 
 The files are distributed here : [Generated Page](https://yanntm.github.io/pnmcc-models-2020/index.html) as 
 
@@ -21,19 +21,18 @@ e.g.
 
 ```
 ./runatest.sh ARMCacheCoherence-PT-none ReachabilityFireability
-FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-00 FALSE TECHNIQUES ORACLE2018
-FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-01 FALSE TECHNIQUES ORACLE2018
-FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-02 TRUE TECHNIQUES ORACLE2018
-FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-03 FALSE TECHNIQUES ORACLE2018
-FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-04 FALSE TECHNIQUES ORACLE2018
-FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-05 TRUE TECHNIQUES ORACLE2018
-FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-06 FALSE TECHNIQUES ORACLE2018
+FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-00 FALSE TECHNIQUES ORACLE2020
+FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-01 FALSE TECHNIQUES ORACLE2020
+FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-02 TRUE TECHNIQUES ORACLE2020
+FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-03 FALSE TECHNIQUES ORACLE2020
 ... file shortened...
 ```
 
 ## Acknowledgements
 
 The files produced by this project are created using the official archives taken from the [MCC website](https://mcc.lip6.fr/archives/), we basically decompress the virtual machine image to extract the model + formula files, and use some perl tricks on the "raw_results.csv" to create the oracle files.
+
+We have a similar project to host the files for previous years, going back to 2017,e.g. https://github.com/yanntm/pnmcc-models-2019
 
 We are grateful to [travis-ci](https://travis-ci.org) for freely providing build time and network bandwidth for these artifacts, as well as [GitHub](https://github.com) for hosting this repository and the generated artifacts. We thank these companies for thus contributing to the development of quality open source software.
   
