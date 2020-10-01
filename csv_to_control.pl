@@ -9,10 +9,6 @@ while (my $line = <STDIN>) {
   my @fields = split /,/, $line;
   my $modelname = @fields[0];
   
- # this model has a naming issue
-  if ($modelname =~ /RefineWMG/) {
-  	$modelname =~ s/(\d\d\d)(\d\d\d)/\1-\2/g;
-  }
   my $examination = @fields[1];
   my $prefix = $modelname."-".@fields[1];
  # so does this one
