@@ -21,8 +21,11 @@ cat raw-result-analysis.csv | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | 
 mv *.out oracle/
 
 # Due to parse errors of ITS-Tools+ITS-Lola that were not always interpreted as such in 2020
-# consensus, and thus oracles on this model are unreliable.
+# consensus, and thus oracles on this model are unreliable on sizes above 1
+mv oracle/Sudoku-COL-AN01* .
+mv oracle/Sudoku-COL-BN01* .
 rm oracle/Sudoku-COL*
+mv Sudoku-COL* oracle/
 
 # after manual examination, this consensus verdict (with weak support) is also wrong
 # formula is reduced to true by e.g. Spot : https://spot.lrde.epita.fr/app/

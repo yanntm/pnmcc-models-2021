@@ -28,7 +28,7 @@ FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-03 FALSE TECHNIQUES OR
 ... file shortened...
 ```
 
-## Acknowledgements
+## Sources and notes
 
 The files produced by this project are created using the official archives taken from the [MCC website](https://mcc.lip6.fr/archives/), we basically decompress the virtual machine image to extract the model + formula files, 
 and use some perl tricks on the "raw_results.csv" to create the oracle files. All the files building this oracle live in this repository and can be inspected.
@@ -37,7 +37,12 @@ The traces for StateSpace examination are built using all complete verdicts from
 We used the "collect_tedd.sh" script that lives in this repo to build these oracles, but we did this offline since our CI provider is not generous enough that we could download and decompress the full logs from the contest.
 Note that Tedd had a 100% reliability score, so these values should be trustable.  
 
+A contrario, due to a parse error in the COL to PT unfolding component of ITS-Tools, contest provided consensus on Sudoku-COL models should not be trusted.
+We only kept oracles for the first instances (AN01 and BN01) of this model in consequence, which are values provided by GreatSPN and should be trustable.
+
 We have a similar project to host the files for previous years, going back to 2017,e.g. https://github.com/yanntm/pnmcc-models-2019
+
+## Acknowledgements
 
 We are grateful to [travis-ci](https://travis-ci.org) for freely providing build time and network bandwidth for these artifacts, as well as [GitHub](https://github.com) for hosting this repository and the generated artifacts. 
 We thank these companies for thus contributing to the development of quality open source software.
