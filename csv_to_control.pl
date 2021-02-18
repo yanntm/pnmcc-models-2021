@@ -38,7 +38,7 @@ while (my $line = <STDIN>) {
   } else {
       print "doing $prefix, in file $outff has ".($#verdicts + 1)." entries \n";  
       open OUT, "> $outff";
-      print OUT "./runatest.sh ".@fields[0]." ".@fields[1] ."\n";
+      print OUT @fields[0]." ".@fields[1] ."\n";
       for (my $i=0 ; $i <= $#verdicts ; $i++) {
 		  my $res = @verdicts[$i];   
 		  $res =~ s/F/FALSE/g;
