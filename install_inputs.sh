@@ -24,6 +24,23 @@ tar czf MAPK-PT-00640.tgz MAPK-PT-00640/
 rm -rf MAPK-PT-00640/
 cd ..
 
+# special patch for RefineWMG bad formula names e.g. : n0-ReachabilityFireability-08
+cd INPUTS
+for i in RefineWMG*.tgz ;
+do
+	tar xzf $i
+	name=$(echo $i | sed 's/\.tgz//')
+	cd $name
+	for ff in *.xml *.txt ; do sed -i "s/<id>n0/<id>$name/g" $ff ; done
+	cd ..
+	rm -f $i
+	tar czf $i $name/
+	rm -rf $name/
+done
+cd ..
+
+
+
 # create oracle files
 mkdir oracle
 wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/2020/archives/raw-result-analysis.csv.zip
