@@ -60,6 +60,15 @@ mv Sudoku-COL* oracle/
 # try it : X !X !(X G "k38" | F !X "k38")
 sed -i -e "s/Angiogenesis-PT-15-14 FALSE/Angiogenesis-PT-15-14 TRUE/" oracle/Angiogenesis-PT-15-LTLF.out
 
+# Due to ITS-Tools in 2020 believing NUPN implies one-safe, consensus on these RERS examinations are wrong (sorry everyone !)
+rm oracle/RERS17pb113-PT-7-RC.out oracle/RERS17pb113-PT-8-RC.out 
+rm oracle/RERS17pb114-PT-2-RC.out oracle/RERS17pb114-PT-5-RC.out oracle/RERS17pb114-PT-6-RC.out oracle/RERS17pb114-PT-7-RC.out oracle/RERS17pb114-PT-8-RC.out oracle/RERS17pb114-PT-9-RC.out 
+rm oracle/RERS17pb115-PT-4-RC.out oracle/RERS17pb115-PT-5-RC.out oracle/RERS17pb115-PT-6-RC.out oracle/RERS17pb115-PT-7-RC.out oracle/RERS17pb115-PT-8-RC.out oracle/RERS17pb115-PT-9-RC.out
+
+rm oracle/RERS17pb114-PT-6-RF.out oracle/RERS17pb114-PT-7-RF.out oracle/RERS17pb114-PT-8-RF.out oracle/RERS17pb114-PT-9-RF.out 
+rm oracle/RERS17pb115-PT-5-RF.out oracle/RERS17pb115-PT-6-RF.out oracle/RERS17pb115-PT-7-RF.out oracle/RERS17pb115-PT-8-RF.out oracle/RERS17pb115-PT-9-RF.out
+
+
 #rm -f raw-result-analysis.csv*
 
 cd oracle
