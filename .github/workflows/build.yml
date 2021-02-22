@@ -1,0 +1,27 @@
+name: Automated build of website
+
+on: 
+ push:
+   branches: [ master ]
+ repository_dispatch:
+   types: [rebuild]
+
+jobs:
+  build:
+    name: Generate page
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build everything
+      run: ./install_inputs.sh
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: website # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch 
+
+         
