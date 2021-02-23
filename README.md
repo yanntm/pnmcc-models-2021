@@ -44,7 +44,8 @@ We have a similar project to host the files for previous years, going back to 20
 
 ## Acknowledgements
 
-We are grateful to [travis-ci](https://travis-ci.org) for freely providing build time and network bandwidth for these artifacts, as well as [GitHub](https://github.com) for hosting this repository and the generated artifacts. 
+We are grateful to [GitHub](https://github.com) for freely providing build time and network bandwidth for these artifacts (through GitHub actions), as well as  for hosting this repository and the generated artifacts. 
+We are still grateful to [travis-ci](https://travis-ci.org) for freely providing build time and network bandwidth for these artifacts for several years, before they changed their open source policy in 2020.
 We thank these companies for thus contributing to the development of quality open source software.
   
 The source model and formulas are extracted from the [Model checking Contest](http://mcc.lip6.fr) under an open access license.
