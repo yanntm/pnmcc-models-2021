@@ -43,6 +43,7 @@ while (my $line = <STDIN>) {
 		  my $res = @verdicts[$i];   
 		  $res =~ s/F/FALSE/g;
 		  $res =~ s/T/TRUE/g;
+		  $res =~ s/(\d)\.0000E\+0005/${1}00000/g ;
 		  if ($#verdicts != 0) {
 		  	  # ordianry formulas
 			  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2020\n";
