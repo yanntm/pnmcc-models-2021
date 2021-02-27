@@ -43,10 +43,13 @@ cd ..
 
 # create oracle files
 mkdir oracle
+mkdir poracle
 wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/2020/archives/raw-result-analysis.csv.zip
 unzip raw-result-analysis.csv.zip
 cat raw-result-analysis.csv | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
 mv *.out oracle/
+cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sort | uniq | ../csv_to_control.pl
+mv *.out poracle/
 
 # Due to parse errors of ITS-Tools+ITS-Lola that were not always interpreted as such in 2020
 # consensus, and thus oracles on this model are unreliable on sizes above 1
@@ -75,7 +78,9 @@ cd oracle
 tar xvzf ../../oracleSS.tar.gz
 cd ..
 tar cvzf oracle.tar.gz  oracle/
-#rm -rf oracle/
+rm -rf oracle/
+tar cvzf poracle.tar.gz  poracle/
+rm -rf poracle/
 
 cd ..
 
