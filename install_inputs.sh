@@ -40,14 +40,17 @@ done
 cd ..
 
 
+# grab the raw results file from MCC website
+wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/2020/archives/raw-result-analysis.csv.zip
+unzip raw-result-analysis.csv.zip
 
 # create oracle files
 mkdir oracle
 mkdir poracle
-wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/2020/archives/raw-result-analysis.csv.zip
-unzip raw-result-analysis.csv.zip
+# all results available
 cat raw-result-analysis.csv | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
 mv *.out oracle/
+# partial oracles may contain '?'
 cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sort | uniq | ../csv_to_control.pl
 mv *.out poracle/
 
