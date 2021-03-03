@@ -40,19 +40,20 @@ done
 cd ..
 
 
-# grab the raw results file from MCC website
-wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/2020/archives/raw-result-analysis.csv.zip
-unzip raw-result-analysis.csv.zip
+
+if [ ! -f raw-result-analysis.csv ] 
+then
+	# grab the raw results file from MCC website
+	wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/2020/archives/raw-result-analysis.csv.zip
+	unzip raw-result-analysis.csv.zip
+fi
 
 # create oracle files
 mkdir oracle
 mkdir poracle
 # all results available
-cat raw-result-analysis.csv | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
+cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
 mv *.out oracle/
-# partial oracles may contain '?'
-cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sort | uniq | ../csv_to_control.pl
-mv *.out poracle/
 
 # Due to parse errors of ITS-Tools+ITS-Lola that were not always interpreted as such in 2020
 # consensus, and thus oracles on this model are unreliable on sizes above 1
@@ -81,9 +82,20 @@ cd oracle
 tar xvzf ../../oracleSS.tar.gz
 cd ..
 tar cvzf oracle.tar.gz  oracle/
-rm -rf oracle/
+#rm -rf oracle/
+
+# partial oracles may contain '?'
+cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sort | uniq | ../csv_to_control.pl
+
+# Sudoku unreliable oracles
+cat raw-result-analysis.csv | grep -v StateSpace | grep Sudoku-COL | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
+rm Sudoku-COL-AN01* Sudoku-COL-BN01* 
+for i in Sudoku-COL-*UB.out Sudoku-COL-*CTL?.out Sudoku-COL-*LTL?.out Sudoku-COL-*RF.out Sudoku-COL-*RC.out ; do cat $i | perl -pe 's/\w+ TECHNIQUES/? TECHNIQUES/g' > $i.tmp ; mv -f $i.tmp $i ; done
+
+mv *.out poracle/
+
 tar cvzf poracle.tar.gz  poracle/
-rm -rf poracle/
+#rm -rf poracle/
 
 cd ..
 
