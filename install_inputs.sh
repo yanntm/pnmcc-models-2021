@@ -60,6 +60,7 @@ mv *.out oracle/
 mv oracle/Sudoku-COL-AN01* .
 mv oracle/Sudoku-COL-BN01* .
 rm oracle/Sudoku-COL*
+rm Sudoku-COL*LTL?.out
 mv Sudoku-COL* oracle/
 
 # after manual examination, this consensus verdict (with weak support) is also wrong
@@ -89,7 +90,12 @@ cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?
 
 # Sudoku unreliable oracles
 cat raw-result-analysis.csv | grep -v StateSpace | grep Sudoku-COL | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
-rm Sudoku-COL-AN01* Sudoku-COL-BN01* 
+for i in *.out ; do 
+if [ -f "oracle/$i" ]
+then 
+rm $i 
+fi
+done 
 for i in Sudoku-COL-*UB.out Sudoku-COL-*CTL?.out Sudoku-COL-*LTL?.out Sudoku-COL-*RF.out Sudoku-COL-*RC.out ; do cat $i | perl -pe 's/\w+ TECHNIQUES/? TECHNIQUES/g' > $i.tmp ; mv -f $i.tmp $i ; done
 
 mv *.out poracle/
