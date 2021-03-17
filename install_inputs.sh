@@ -68,6 +68,15 @@ mv Sudoku-COL* oracle/
 # try it : X !X !(X G "k38" | F !X "k38")
 sed -i -e "s/Angiogenesis-PT-15-14 FALSE/Angiogenesis-PT-15-14 TRUE/" oracle/Angiogenesis-PT-15-LTLF.out
 
+# this oracle is also wrong, formula is :!(F(!G((G(X(p0))||!p0)))||G(p0))
+# which spot reduces to :  !( (G p0) | (F !G (!p0 | G X p0)))
+# which produces an automaton with !p0 on the only outgoing edge from initial state.
+# But p0=enabled(Prepare_request), *is indeed* true in initial state, see model here
+# https://mcc.lip6.fr/2020/pdf/CSRepetitions-form.pdf
+sed -i -e "s/CSRepetitions-PT-04-03 FALSE/CSRepetitions-PT-04-03 TRUE/" oracle/CSRepetitions-PT-04-LTLF.out
+sed -i -e "s/CSRepetitions-COL-04-03 FALSE/CSRepetitions-COL-04-03 TRUE/" oracle/CSRepetitions-COL-04-LTLF.out
+
+
 # Due to ITS-Tools in 2020 believing NUPN implies one-safe, consensus on these RERS examinations are wrong (sorry everyone !)
 rm oracle/RERS17pb113-PT-7-RC.out oracle/RERS17pb113-PT-8-RC.out 
 rm oracle/RERS17pb114-PT-2-RC.out oracle/RERS17pb114-PT-5-RC.out oracle/RERS17pb114-PT-6-RC.out oracle/RERS17pb114-PT-7-RC.out oracle/RERS17pb114-PT-8-RC.out oracle/RERS17pb114-PT-9-RC.out 
@@ -75,6 +84,9 @@ rm oracle/RERS17pb115-PT-4-RC.out oracle/RERS17pb115-PT-5-RC.out oracle/RERS17pb
 
 rm oracle/RERS17pb114-PT-6-RF.out oracle/RERS17pb114-PT-7-RF.out oracle/RERS17pb114-PT-8-RF.out oracle/RERS17pb114-PT-9-RF.out 
 rm oracle/RERS17pb115-PT-5-RF.out oracle/RERS17pb115-PT-6-RF.out oracle/RERS17pb115-PT-7-RF.out oracle/RERS17pb115-PT-8-RF.out oracle/RERS17pb115-PT-9-RF.out
+
+# more errors due to RERS not being 1-safe
+sed -i -e "s/RERS17pb114-PT-6-08 TRUE/RERS17pb114-PT-6-08 FALSE/" oracle/RERS17pb114-PT-6-LTLF.out
 
 
 #rm -f raw-result-analysis.csv*
