@@ -52,7 +52,7 @@ fi
 mkdir oracle
 mkdir poracle
 # all results available
-cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
+cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep -v "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
 mv *.out oracle/
 
 # Due to parse errors of ITS-Tools+ITS-Lola that were not always interpreted as such in 2020
@@ -102,10 +102,10 @@ tar cvzf oracle.tar.gz  oracle/
 #rm -rf oracle/
 
 # partial oracles may contain '?'
-cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sort | uniq | ../csv_to_control.pl
+cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
 
 # Sudoku unreliable oracles
-cat raw-result-analysis.csv | grep -v StateSpace | grep Sudoku-COL | cut -d ',' -f2,3,16 | grep -v "?" | sort | uniq | ../csv_to_control.pl
+cat raw-result-analysis.csv | grep -v StateSpace | grep Sudoku-COL | cut -d ',' -f2,3,16 | grep -v "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
 for i in *.out ; do 
 if [ -f "oracle/$i" ]
 then 
