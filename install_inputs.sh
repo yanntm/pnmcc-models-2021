@@ -76,6 +76,10 @@ sed -i -e "s/Angiogenesis-PT-15-14 FALSE/Angiogenesis-PT-15-14 TRUE/" oracle/Ang
 sed -i -e "s/CSRepetitions-PT-04-03 FALSE/CSRepetitions-PT-04-03 TRUE/" oracle/CSRepetitions-PT-04-LTLF.out
 sed -i -e "s/CSRepetitions-COL-04-03 FALSE/CSRepetitions-COL-04-03 TRUE/" oracle/CSRepetitions-COL-04-LTLF.out
 
+# another wrong oracle, GreatSPN sole to answer on this but has errors on smaller instances of the model
+# negated formula is : !(X((!p0||X(X(F((G(F(p2))||p1)))))))
+# our proof approach discards it quite convincingly using knowledge  : ... & (F (G p2)) 
+sed -i -e "s/AirplaneLD-COL-0200-10 FALSE/AirplaneLD-COL-0200-10 TRUE/" oracle/AirplaneLD-COL-0200-LTLF.out
 
 # Due to ITS-Tools in 2020 believing NUPN implies one-safe, consensus on these RERS examinations are wrong (sorry everyone !)
 rm oracle/RERS17pb113-PT-7-RC.out oracle/RERS17pb113-PT-8-RC.out 
