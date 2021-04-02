@@ -114,6 +114,10 @@ fi
 done 
 for i in Sudoku-COL-*UB.out Sudoku-COL-*CTL?.out Sudoku-COL-*LTL?.out Sudoku-COL-*RF.out Sudoku-COL-*RC.out ; do cat $i | perl -pe 's/\w+ TECHNIQUES/? TECHNIQUES/g' > $i.tmp ; mv -f $i.tmp $i ; done
 
+# errors due to enpac
+sed -i -e "s/SharedMemory-COL-000050-15 TRUE/SharedMemory-COL-000050-15 FALSE/" SharedMemory-COL-000050-LTLF.out
+
+
 mv *.out poracle/
 
 tar cvzf poracle.tar.gz  poracle/
