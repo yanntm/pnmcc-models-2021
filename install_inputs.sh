@@ -122,6 +122,7 @@ for i in Sudoku-COL-*UB.out Sudoku-COL-*CTL?.out Sudoku-COL-*LTL?.out Sudoku-COL
 # errors due to enpac
 sed -i -e "s/SharedMemory-COL-000050-15 TRUE/SharedMemory-COL-000050-15 FALSE/" SharedMemory-COL-000050-LTLF.out
 sed -i -e "s/AirplaneLD-PT-4000-13 TRUE/AirplaneLD-PT-4000-13 FALSE/" AirplaneLD-PT-4000-LTLC.out
+sed -i -e "s/NoC3x3-PT-7B-10 TRUE/NoC3x3-PT-7B-10 FALSE/" NoC3x3-PT-7B-LTLC.out
 
 # more GreatSPN solo answers on LTL where it makes errors when there are other tools answering
 sed -i -e "s/HouseConstruction-PT-00020-01 FALSE/HouseConstruction-PT-00020-01 TRUE/" HouseConstruction-PT-00020-LTLC.out
