@@ -86,17 +86,11 @@ sed -i -e "s/AirplaneLD-COL-0200-10 FALSE/AirplaneLD-COL-0200-10 TRUE/" oracle/A
 
 
 
-# Due to ITS-Tools in 2020 believing NUPN implies one-safe, consensus on these RERS examinations are wrong (sorry everyone !)
-rm oracle/RERS17pb113-PT-7-RC.out oracle/RERS17pb113-PT-8-RC.out 
-rm oracle/RERS17pb114-PT-2-RC.out oracle/RERS17pb114-PT-5-RC.out oracle/RERS17pb114-PT-6-RC.out oracle/RERS17pb114-PT-7-RC.out oracle/RERS17pb114-PT-8-RC.out oracle/RERS17pb114-PT-9-RC.out 
-rm oracle/RERS17pb115-PT-4-RC.out oracle/RERS17pb115-PT-5-RC.out oracle/RERS17pb115-PT-6-RC.out oracle/RERS17pb115-PT-7-RC.out oracle/RERS17pb115-PT-8-RC.out oracle/RERS17pb115-PT-9-RC.out
-
-rm oracle/RERS17pb114-PT-6-RF.out oracle/RERS17pb114-PT-7-RF.out oracle/RERS17pb114-PT-8-RF.out oracle/RERS17pb114-PT-9-RF.out 
-rm oracle/RERS17pb115-PT-5-RF.out oracle/RERS17pb115-PT-6-RF.out oracle/RERS17pb115-PT-7-RF.out oracle/RERS17pb115-PT-8-RF.out oracle/RERS17pb115-PT-9-RF.out
+# Due to ITS-Tools in 2020 believing NUPN implies one-safe, consensus on these RERS examinations are wrong/should not be trusted (sorry everyone !)
+rm oracle/RERS17*-RC.out oracle/RERS17*-RF.out 
 
 # more errors due to RERS not being 1-safe
 sed -i -e "s/RERS17pb114-PT-6-08 TRUE/RERS17pb114-PT-6-08 FALSE/" oracle/RERS17pb114-PT-6-LTLF.out
-
 
 #rm -f raw-result-analysis.csv*
 
@@ -118,6 +112,11 @@ rm $i
 fi
 done 
 for i in Sudoku-COL-*UB.out Sudoku-COL-*CTL?.out Sudoku-COL-*LTL?.out Sudoku-COL-*RF.out Sudoku-COL-*RC.out ; do cat $i | perl -pe 's/\w+ TECHNIQUES/? TECHNIQUES/g' > $i.tmp ; mv -f $i.tmp $i ; done
+
+# RERS unreliable oracles
+cat raw-result-analysis.csv | grep -v StateSpace | grep RERS17 | grep Reachability | cut -d ',' -f2,3,16 | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
+for i in RERS17*RC.out RERS17*RF.out ; do cat $i | perl -pe 's/\w+ TECHNIQUES/? TECHNIQUES/g' > $i.tmp ; mv -f $i.tmp $i ; done
+
 
 # errors due to enpac
 sed -i -e "s/SharedMemory-COL-000050-15 TRUE/SharedMemory-COL-000050-15 FALSE/" SharedMemory-COL-000050-LTLF.out
