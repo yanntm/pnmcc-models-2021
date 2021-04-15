@@ -84,6 +84,8 @@ sed -i -e "s/Diffusion2D-PT-D05N200-15 FALSE/Diffusion2D-PT-D05N200-15 TRUE/" or
 # our proof approach discards it quite convincingly using knowledge  : ... & (F (G p2)) 
 sed -i -e "s/AirplaneLD-COL-0200-10 FALSE/AirplaneLD-COL-0200-10 TRUE/" oracle/AirplaneLD-COL-0200-LTLF.out
 
+# contest trusted Smart but should have trusted GreatSpn on this one
+sed -i -e "s/Liveness FALSE/Liveness TRUE/" oracle/JoinFreeModules-PT-0010-L.out
 
 
 # Due to ITS-Tools in 2020 believing NUPN implies one-safe, consensus on these RERS examinations are wrong/should not be trusted (sorry everyone !)
