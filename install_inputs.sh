@@ -84,6 +84,10 @@ sed -i -e "s/Diffusion2D-PT-D05N200-15 FALSE/Diffusion2D-PT-D05N200-15 TRUE/" or
 # our proof approach discards it quite convincingly using knowledge  : ... & (F (G p2)) 
 sed -i -e "s/AirplaneLD-COL-0200-10 FALSE/AirplaneLD-COL-0200-10 TRUE/" oracle/AirplaneLD-COL-0200-LTLF.out
 
+# manually examined, confirmed by LTSmin, contradicts Lola
+sed -i -e "s/Philosophers-COL-000200-06 TRUE/Philosophers-COL-000200-06 FALSE/" oracle/Philosophers-COL-000200-LTLF.out
+
+
 # contest trusted Smart but should have trusted GreatSpn on these examinations
 sed -i -e "s/Liveness FALSE/Liveness TRUE/" oracle/JoinFreeModules-PT-0010-L.out
 sed -i -e "s/Liveness FALSE/Liveness TRUE/" oracle/NeighborGrid-PT-d3n3m1t11-L.out
@@ -127,13 +131,20 @@ sed -i -e "s/SharedMemory-COL-000050-15 TRUE/SharedMemory-COL-000050-15 FALSE/" 
 sed -i -e "s/AirplaneLD-PT-4000-13 TRUE/AirplaneLD-PT-4000-13 FALSE/" AirplaneLD-PT-4000-LTLC.out
 sed -i -e "s/NoC3x3-PT-7B-10 TRUE/NoC3x3-PT-7B-10 FALSE/" NoC3x3-PT-7B-LTLC.out
 sed -i -e "s/ShieldPPPs-PT-020A-06 TRUE/ShieldPPPs-PT-020A-06 FALSE/" ShieldPPPs-PT-020A-LTLC.out
+sed -i -e "s/SharedMemory-COL-000100-13 TRUE/SharedMemory-COL-000100-13 FALSE/" SharedMemory-COL-000100-LTLF.out
+sed -i -e "s/TokenRing-COL-050-15 TRUE/TokenRing-COL-050-15 FALSE/" TokenRing-COL-050-LTLF.out
+sed -i -e "s/JoinFreeModules-PT-0100-12 TRUE/JoinFreeModules-PT-0100-12 FALSE/" JoinFreeModules-PT-0100-LTLC.out
+
 
 # more GreatSPN solo answers on LTL where it makes errors when there are other tools answering
 sed -i -e "s/HouseConstruction-PT-00020-01 FALSE/HouseConstruction-PT-00020-01 TRUE/" HouseConstruction-PT-00020-LTLC.out
 sed -i -e "s/Referendum-COL-0100-13 FALSE/Referendum-COL-0100-13 TRUE/" Referendum-COL-0100-LTLC.out
 
-# more RERS bad answers by ITS tools
+# more RERS bad answers by ITS tools or Its-lola
 sed -i -e "s/RERS17pb113-PT-7-08 TRUE/RERS17pb113-PT-7-08 FALSE/" RERS17pb113-PT-7-LTLC.out
+sed -i -e "s/RERS17pb114-PT-9-03 TRUE/RERS17pb114-PT-9-03 FALSE/" RERS17pb114-PT-9-LTLC.out
+sed -i -e "s/RERS17pb114-PT-7-03 TRUE/RERS17pb114-PT-7-03 FALSE/" RERS17pb114-PT-7-LTLF.out
+sed -i -e "s/RERS17pb114-PT-8-04 TRUE/RERS17pb114-PT-8-04 FALSE/" RERS17pb114-PT-8-LTLF.out
 
 
 mv *.out poracle/
