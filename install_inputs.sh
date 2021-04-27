@@ -87,6 +87,10 @@ sed -i -e "s/AirplaneLD-COL-0200-10 FALSE/AirplaneLD-COL-0200-10 TRUE/" oracle/A
 # manually examined, confirmed by LTSmin, contradicts Lola
 sed -i -e "s/Philosophers-COL-000200-06 TRUE/Philosophers-COL-000200-06 FALSE/" oracle/Philosophers-COL-000200-LTLF.out
 
+# manual examination was hard, but we trust the numerous methods that confirm it internally in ITS-tools
+# unfortunately both GreatSPN and Lola agreed it was false in 2020.
+sed -i -e "s/BusinessProcesses-PT-02-01 FALSE/BusinessProcesses-PT-02-01 TRUE/" oracle/BusinessProcesses-PT-02-LTLF.out
+ 
 
 # contest trusted Smart but should have trusted GreatSpn on these examinations
 sed -i -e "s/Liveness FALSE/Liveness TRUE/" oracle/JoinFreeModules-PT-0010-L.out
