@@ -21,7 +21,7 @@ while (my $line = <STDIN>) {
  $prefix =~ s/HouseConstruction-PT-00020/HouseConstruction-PT-0020/;
 
   if ($examination =~ /LTL.*/) {
-  	# in 2020 no examination in these formulas
+  	# in 2021 no examination in these formulas
   	$prefix = $modelname ;
   }
 
@@ -52,15 +52,15 @@ while (my $line = <STDIN>) {
 		  $res =~ s/(\d)\.0000E\+0005/${1}00000/g ;
 		  if ($globalProperties{$examination}) {
 			# GlobalProperties cases : formula name is simply examination
-		  	print OUT "FORMULA ".$examination." ".$res." TECHNIQUES ORACLE2020\n";  		  	
+		  	print OUT "FORMULA ".$examination." ".$res." TECHNIQUES ORACLE2021\n";  		  	
 		  } else {
 			  if ($#verdicts != 0) {
 			  	  # ordinary case : 16 formulas
-				  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2020\n";
+				  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2021\n";
 			  } else {
-			  	# total failure of all tools in 2020, simulate question mark answer
+			  	# total failure of all tools in 2021, simulate question mark answer
 			  	foreach (@index) {
-				  	print OUT "FORMULA ".$prefix."-".$_." "."?"." TECHNIQUES ORACLE2020\n";
+				  	print OUT "FORMULA ".$prefix."-".$_." "."?"." TECHNIQUES ORACLE2021\n";
 			  	}
 			  }		  	
 		  }
