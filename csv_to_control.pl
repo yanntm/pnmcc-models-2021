@@ -45,7 +45,7 @@ while (my $line = <STDIN>) {
   } else {
       print "doing $prefix, in file $outff has ".($#verdicts + 1)." entries \n";  
       open OUT, "> $outff";
-      open CSV, ">> $outff";
+      open CSV, ">> $csvff";
       # model examination
       print OUT @fields[0]." ".@fields[1] ."\n";
       for (my $i=0 ; $i <= $#verdicts ; $i++) {
@@ -56,17 +56,17 @@ while (my $line = <STDIN>) {
 		  if ($globalProperties{$examination}) {
 			# GlobalProperties cases : formula name is simply examination
 		  	print OUT "FORMULA ".$examination." ".$res." TECHNIQUES ORACLE2021\n";
-			print CSV  @fields[0].",".@fields[1].",0,".$res;
+			print CSV  @fields[0].",".@fields[1].",0,".$res."\n";
 		  } else {
 			  if ($#verdicts != 0) {
 			  	  # ordinary case : 16 formulas
 				  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2021\n";
-				  print CSV  @fields[0].",".@fields[1].",".@index[$i].",".$res;
+				  print CSV  @fields[0].",".@fields[1].",".@index[$i].",".$res."\n";
 			  } else {
 			  	# total failure of all tools in 2021, simulate question mark answer
 			  	foreach (@index) {
 				  	print OUT "FORMULA ".$prefix."-".$_." "."?"." TECHNIQUES ORACLE2021\n";
-					print CSV  @fields[0].",".@fields[1].",".$_.",".$res;
+					print CSV  @fields[0].",".@fields[1].",".$_.",".$res."\n";
 			  	}
 			  }		  	
 		  }
