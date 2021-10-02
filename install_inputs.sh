@@ -33,7 +33,7 @@ cd oracle
 tar xvzf ../../oracleSS.tar.gz
 cd ..
 tar cvzf oracle.tar.gz  oracle/
-#rm -rf oracle/
+rm -rf oracle/
 
 # partial oracles may contain '?'
 cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
@@ -50,6 +50,8 @@ done
 mv *.out poracle/
 
 tar cvzf poracle.tar.gz  poracle/
-#rm -rf poracle/
+rm -rf poracle/
+
+tree -H "." > index.html
 
 cd ..
