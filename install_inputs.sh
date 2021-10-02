@@ -38,14 +38,6 @@ rm -rf oracle/
 # partial oracles may contain '?'
 cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
 
-# Sudoku unreliable oracles
-cat raw-result-analysis.csv | grep -v StateSpace | grep Sudoku-COL | cut -d ',' -f2,3,16 | grep -v "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
-for i in *.out ; do 
-if [ -f "oracle/$i" ]
-then 
-rm $i 
-fi
-done 
 
 mv *.out poracle/
 
