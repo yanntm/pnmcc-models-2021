@@ -38,12 +38,15 @@ while (my $line = <STDIN>) {
   $abbrev =~ s/[a-z]//g;
   
   my $outff = $modelname."-".$abbrev.".out";
+  my $csvff = "consensus.csv";
 
   if (-f $outff) {
       print "Not overwriting existing oracle file $outff\n";
   } else {
       print "doing $prefix, in file $outff has ".($#verdicts + 1)." entries \n";  
       open OUT, "> $outff";
+      open CSV, ">> $outff";
+      # model examination
       print OUT @fields[0]." ".@fields[1] ."\n";
       for (my $i=0 ; $i <= $#verdicts ; $i++) {
 		  my $res = @verdicts[$i];   
@@ -52,20 +55,24 @@ while (my $line = <STDIN>) {
 		  $res =~ s/(\d)\.0000E\+0005/${1}00000/g ;
 		  if ($globalProperties{$examination}) {
 			# GlobalProperties cases : formula name is simply examination
-		  	print OUT "FORMULA ".$examination." ".$res." TECHNIQUES ORACLE2021\n";  		  	
+		  	print OUT "FORMULA ".$examination." ".$res." TECHNIQUES ORACLE2021\n";
+			print CSV  @fields[0].",".@fields[1].",0,".$res;
 		  } else {
 			  if ($#verdicts != 0) {
 			  	  # ordinary case : 16 formulas
 				  print OUT "FORMULA ".$prefix."-".@index[$i]." ".$res." TECHNIQUES ORACLE2021\n";
+				  print CSV  @fields[0].",".@fields[1].",".@index[$i].",".$res;
 			  } else {
 			  	# total failure of all tools in 2021, simulate question mark answer
 			  	foreach (@index) {
 				  	print OUT "FORMULA ".$prefix."-".$_." "."?"." TECHNIQUES ORACLE2021\n";
+					print CSV  @fields[0].",".@fields[1].",".$_.",".$res;
 			  	}
 			  }		  	
 		  }
       }
       close OUT;
+      close CSV;
   }
 }
 
