@@ -34,19 +34,17 @@ FORMULA ARMCacheCoherence-PT-none-ReachabilityFireability-03 FALSE TECHNIQUES OR
 The files produced by this project are created using the official archives taken from the [MCC website](https://mcc.lip6.fr/archives/), we basically decompress the virtual machine image to extract the model + formula files, 
 and use some perl tricks on the "raw_results.csv" to create the oracle files. All the files building this oracle live in this repository and can be inspected.
 
-The traces for StateSpace examination are built using all complete verdicts from 2021 gold medalist Tedd, because the "raw_results.csv" cannot be used as large numbers (e.g. state count) are shortened.
+The traces for StateSpace examination are built using all complete verdicts from 2020 gold medalist Tedd, because the "raw_results.csv" cannot be used as large numbers (e.g. state count) are shortened.
 We used the "collect_tedd.sh" script that lives in this repo to build these oracles, but we did this offline since our CI provider is not generous enough that we could download and decompress the full logs from the contest.
 Note that Tedd had a 100% reliability score, so these values should be trustable.  
+Currently we have not yet updated these files, so these are verdicts from the 2020 edition of the contest.
 
-A contrario, due to a parse error in the COL to PT unfolding component of ITS-Tools, contest provided consensus on Sudoku-COL models should not be trusted.
-We only kept oracles for the first instances (AN01 and BN01) of this model in consequence, which are values provided by GreatSPN and should be trustable.
-
-We have a similar project to host the files for previous years, going back to 2017,e.g. https://github.com/yanntm/pnmcc-models-2019
+We have a similar project to host the files for previous years, going back to 2017,e.g. https://github.com/yanntm/pnmcc-models-2020
+These repositories are curated, consensus verdicts that are incorrect are diagnosed and patched.
 
 ## Acknowledgements
 
 We are grateful to [GitHub](https://github.com) for freely providing build time and network bandwidth for these artifacts (through GitHub actions), as well as  for hosting this repository and the generated artifacts. 
-We are still grateful to [travis-ci](https://travis-ci.org) for freely providing build time and network bandwidth for these artifacts for several years, before they changed their open source policy in 2021.
 We thank these companies for thus contributing to the development of quality open source software.
   
 The source model and formulas are extracted from the [Model checking Contest](http://mcc.lip6.fr) under an open access license.
