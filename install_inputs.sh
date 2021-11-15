@@ -14,11 +14,14 @@ tar xvjf mcc2021-input.vmdk.tar.bz2
 rm -f *.vmdk 0.img *.bz2 1
 
 # patch formula names
+echo "Patching formula names"
+set +x
 cd INPUTS
 for i in *.tgz ;
 do
 	tar xzf $i
 	model=$(echo $i | sed 's/.tgz//g')
+	echo "Treating : $model"
 	cd $model/
 	for exam in ReachabilityFireability ReachabilityCardinality ;
 	do
@@ -36,7 +39,7 @@ do
 	rm -rf $model/
 done
 cd ..
-
+set -x
 
 if [ ! -f raw-result-analysis.csv ] 
 then
@@ -55,9 +58,9 @@ mv *.out oracle/
 #rm -f raw-result-analysis.csv*
 
 cd oracle
-tar xvzf ../../oracleSS.tar.gz
+tar xzf ../../oracleSS.tar.gz
 cd ..
-tar cvzf oracle.tar.gz  oracle/
+tar czf oracle.tar.gz  oracle/
 rm -rf oracle/
 
 # partial oracles may contain '?'
@@ -66,7 +69,7 @@ cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?
 
 mv *.out poracle/
 
-tar cvzf poracle.tar.gz  poracle/
+tar czf poracle.tar.gz  poracle/
 rm -rf poracle/
 
 tree -H "." > index.html
