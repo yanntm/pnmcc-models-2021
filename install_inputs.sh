@@ -13,6 +13,31 @@ tar xvjf mcc2021-input.vmdk.tar.bz2
 ../ext2rd 0.img ./:INPUTS
 rm -f *.vmdk 0.img *.bz2 1
 
+# patch formula names
+cd INPUTS
+for i in *.tgz ;
+do
+	tar xzf $i
+	model=$(echo $i | sed 's/.tgz//g')
+	cd $model/
+	for exam in ReachabilityFireability ReachabilityCardinality ;
+	do
+		cat $exam.xml | sed "s/id\>.*-$exam/id>$model-$exam/g" > $exam.tmp
+		\mv $exam.tmp $exam.xml
+	done
+	for exam in LTLFireability LTLCardinality ;
+	do
+		cat $exam.xml | sed "s/id>$model-/id>$model-$exam-/g" > $exam.tmp
+		\mv $exam.tmp $exam.xml
+	done
+	cd ..
+	rm $i
+	tar czf $i $model/
+	rm -rf $model/
+done
+cd ..
+
+
 if [ ! -f raw-result-analysis.csv ] 
 then
 	# grab the raw results file from MCC website
