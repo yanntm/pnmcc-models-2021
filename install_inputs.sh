@@ -7,7 +7,7 @@ cd website
 
 # grab the vmdk file image for all inputs
 mkdir INPUTS
-wget --no-check-certificate --progress=dot:mega http://mcc.lip6.fr/archives/2021/mcc2021-input.vmdk.tar.bz2
+wget --no-check-certificate --progress=dot:mega http://mcc.lip6.fr/2021/archives/mcc2021-input.vmdk.tar.bz2
 tar xvjf mcc2021-input.vmdk.tar.bz2
 ../7z e mcc2021-input.vmdk
 ../ext2rd 0.img ./:INPUTS
@@ -41,7 +41,7 @@ cd ..
 if [ ! -f raw-result-analysis.csv ] 
 then
 	# grab the raw results file from MCC website
-	wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/archives/2021/raw-result-analysis.csv.zip
+	wget --no-check-certificate --progress=dot:mega https://mcc.lip6.fr/2021/archives/raw-result-analysis.csv.zip
 	unzip raw-result-analysis.csv.zip
 fi
 
