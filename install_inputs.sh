@@ -55,6 +55,17 @@ mkdir poracle
 cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep -v "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
 mv *.out oracle/
  
+# contradict GreatSPN, but confirmed by Tapaal (in Dec 2021) and ITS-Tools
+# consensus is poor in 2021, since only ITS-Tools and GreatSPN could parse it
+sed -i -e "s/UtilityControlRoom-COL-Z2T3N06-LTLCardinality-08 TRUE/UtilityControlRoom-COL-Z2T3N06-LTLCardinality-08 FALSE/" UtilityControlRoom-COL-Z2T3N06-LTLC.out
+sed -i -e "s/UtilityControlRoom-COL-Z2T3N10-LTLCardinality-08 TRUE/UtilityControlRoom-COL-Z2T3N10-LTLCardinality-08 FALSE/" UtilityControlRoom-COL-Z2T3N10-LTLC.out
+sed -i -e "s/UtilityControlRoom-COL-Z2T3N10-LTLCardinality-11 TRUE/UtilityControlRoom-COL-Z2T3N10-LTLCardinality-11 FALSE/" UtilityControlRoom-COL-Z2T3N10-LTLC.out
+sed -i -e "s/UtilityControlRoom-COL-Z4T4N02-LTLCardinality-08 TRUE/UtilityControlRoom-COL-Z4T4N02-LTLCardinality-08 FALSE/" UtilityControlRoom-COL-Z4T4N02-LTLC.out
+sed -i -e "s/UtilityControlRoom-COL-Z2T3N06-LTLFireability-14 TRUE/UtilityControlRoom-COL-Z2T3N06-LTLFireability-14 FALSE/" UtilityControlRoom-COL-Z2T3N06-LTLF.out
+sed -i -e "s/UtilityControlRoom-COL-Z4T4N10-LTLFireability-08 TRUE/UtilityControlRoom-COL-Z4T4N10-LTLFireability-08 FALSE/" UtilityControlRoom-COL-Z4T4N10-LTLF.out
+
+
+
 #rm -f raw-result-analysis.csv*
 
 cd oracle
