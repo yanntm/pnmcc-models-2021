@@ -17,13 +17,15 @@ while (my $line = <STDIN>) {
   
   my $examination = @fields[1];
   my $prefix = $modelname."-".@fields[1];
- # so does this one
- $prefix =~ s/HouseConstruction-PT-00020/HouseConstruction-PT-0020/;
+ 
+ # A patch for 2020 name of formula
+ # $prefix =~ s/HouseConstruction-PT-00020/HouseConstruction-PT-0020/;
 
-  if ($examination =~ /LTL.*/) {
-  	# in 2021 no examination in these formulas
-  	$prefix = $modelname ;
-  }
+  # Names of LTL formulas are now patched outside of this script
+  #if ($examination =~ /LTL.*/) {
+  #	# in 2021 no examination in these formulas
+  #	$prefix = $modelname ;
+  #}
 
   my @verdicts = split //, @fields[2];
 
