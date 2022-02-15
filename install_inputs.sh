@@ -64,6 +64,17 @@ sed -i -e "s/UtilityControlRoom-COL-Z2T3N06-LTLFireability-14 TRUE/UtilityContro
 sed -i -e "s/UtilityControlRoom-COL-Z2T4N06-LTLFireability-14 TRUE/UtilityControlRoom-COL-Z2T4N06-LTLFireability-14 FALSE/" UtilityControlRoom-COL-Z2T4N06-LTLF.out
 sed -i -e "s/UtilityControlRoom-COL-Z4T4N10-LTLFireability-08 TRUE/UtilityControlRoom-COL-Z4T4N10-LTLFireability-08 FALSE/" UtilityControlRoom-COL-Z4T4N10-LTLF.out
 
+# no answer in 2021, except 2020gold very red on this example, proved using Knowledge approach
+sed -i -e "s/Sudoku-COL-AN09-LTLFireability-13 FALSE/Sudoku-COL-AN09-LTLFireability-13 TRUE/" Sudoku-COL-AN09-LTLF.out
+sed -i -e "s/Sudoku-COL-AN11-LTLFireability-00 FALSE/Sudoku-COL-AN11-LTLFireability-00 TRUE/" Sudoku-COL-AN11-LTLF.out
+
+# contradict Enpac but checked manually the XXXX part of the formula is satisfiable (in like 5 steps)
+sed -i -e "s/Sudoku-COL-BN16-LTLFireability-04 TRUE/Sudoku-COL-BN16-LTLFireability-04 FALSE/" Sudoku-COL-BN16-LTLF.out
+
+# contradict GreatSPN, but it has red on this model; proved using convergence knowledge (FGp)
+sed -i -e "s/HouseConstruction-PT-00020-LTLFireability-07 FALSE/HouseConstruction-PT-00020-LTLFireability-07 TRUE/" HouseConstruction-PT-00020-LTLF.out
+
+
 mv *.out oracle/
 
 #rm -f raw-result-analysis.csv*
