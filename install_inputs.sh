@@ -50,9 +50,8 @@ fi
 
 # create oracle files
 mkdir oracle
-mkdir poracle
 # all results available
-cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep -v "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
+cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
  
 # contradict GreatSPN, but confirmed by Tapaal (in Dec 2021) and ITS-Tools
 # consensus is poor in 2021, since only ITS-Tools and GreatSPN could parse it
@@ -84,15 +83,6 @@ tar xzf ../../oracleSS.tar.gz
 cd ..
 tar czf oracle.tar.gz  oracle/
 rm -rf oracle/
-
-# partial oracles may contain '?'
-cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | grep "?" | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
-
-
-mv *.out poracle/
-
-tar czf poracle.tar.gz  poracle/
-rm -rf poracle/
 
 tree -H "." > index.html
 
