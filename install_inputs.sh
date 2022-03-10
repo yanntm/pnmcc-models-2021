@@ -73,6 +73,9 @@ sed -i -e "s/Sudoku-COL-BN16-LTLFireability-04 TRUE/Sudoku-COL-BN16-LTLFireabili
 # contradict GreatSPN, but it has red on this model; proved using convergence knowledge (FGp)
 sed -i -e "s/HouseConstruction-PT-00020-LTLFireability-07 FALSE/HouseConstruction-PT-00020-LTLFireability-07 TRUE/" HouseConstruction-PT-00020-LTLF.out
 
+# contradict Lola, but the AP in this formula are actually invariant (according to ITS-tools K_INDUCTION(1) strategy, other tools seem to die on this model)
+sed -i -e "s/ASLink-PT-08b-LTLFireability-15 FALSE/ASLink-PT-08b-LTLFireability-15 TRUE/" ASLink-PT-08b-LTLF.out
+
 
 mv *.out oracle/
 
