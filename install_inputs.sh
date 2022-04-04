@@ -64,6 +64,7 @@ sed -i -e "s/UtilityControlRoom-COL-Z2T4N06-LTLFireability-14 TRUE/UtilityContro
 sed -i -e "s/UtilityControlRoom-COL-Z4T4N10-LTLFireability-08 TRUE/UtilityControlRoom-COL-Z4T4N10-LTLFireability-08 FALSE/" UtilityControlRoom-COL-Z4T4N10-LTLF.out
 
 # no answer in 2021, except 2020gold very red on this example, proved using Knowledge approach
+sed -i -e "s/Sudoku-COL-AN05-LTLFireability-00 FALSE/Sudoku-COL-AN05-LTLFireability-00 TRUE/" Sudoku-COL-AN05-LTLF.out
 sed -i -e "s/Sudoku-COL-AN09-LTLFireability-13 FALSE/Sudoku-COL-AN09-LTLFireability-13 TRUE/" Sudoku-COL-AN09-LTLF.out
 sed -i -e "s/Sudoku-COL-AN11-LTLFireability-00 FALSE/Sudoku-COL-AN11-LTLFireability-00 TRUE/" Sudoku-COL-AN11-LTLF.out
 
