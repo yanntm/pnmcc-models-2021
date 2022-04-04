@@ -77,6 +77,10 @@ sed -i -e "s/HouseConstruction-PT-00020-LTLFireability-07 FALSE/HouseConstructio
 # contradict Lola, but the AP in this formula are actually invariant (according to ITS-tools K_INDUCTION(1) strategy, other tools seem to die on this model)
 sed -i -e "s/ASLink-PT-08b-LTLFireability-15 FALSE/ASLink-PT-08b-LTLFireability-15 TRUE/" ASLink-PT-08b-LTLF.out
 
+# contradict Lola, which is red on every point except when it answers alone on this model/examination.
+sed -i -e "s/StableMarking TRUE/StableMarking FALSE/" ViralEpidemic-PT-S02D1C1A12-SM.out
+sed -i -e "s/StableMarking TRUE/StableMarking FALSE/" ViralEpidemic-PT-S03D1C1A08-SM.out
+sed -i -e "s/StableMarking TRUE/StableMarking FALSE/" ViralEpidemic-PT-S16D2C4A03-SM.out
 
 mv *.out oracle/
 
