@@ -23,7 +23,7 @@ do
 	model=$(echo $i | sed 's/.tgz//g')
 	echo "Treating : $model"
 	cd $model/
-	for exam in ReachabilityFireability ReachabilityCardinality ;
+	for exam in ReachabilityFireability ReachabilityCardinality UpperBounds ;
 	do
 		cat $exam.xml | sed "s/id\>.*-$exam/id>$model-$exam/g" > $exam.tmp
 		\mv $exam.tmp $exam.xml
