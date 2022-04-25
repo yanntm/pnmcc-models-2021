@@ -85,6 +85,7 @@ sed -i -e "s/StableMarking TRUE/StableMarking FALSE/" ViralEpidemic-PT-S16D2C4A0
 # contradict Lola, which is very red on this model/examination + answers alone on these consensus
 # there seems to be issues on Lola with COL symmetric models in 2021 for CTLF.
 # built using this line of shell 
+# grep estFail *out | grep CTL | grep COL > fails.txt
 # for i in $(cat fails.txt | cut -d ' ' -f 8-12 | sed s/\'//g | sed 's/)//g' | sed 's#/##g' | sed 's/  / /g' | sed 's/ /:/g') ; do form=$(echo $i | cut -d ':' -f 1) ; exp=$(echo $i | cut -d ':' -f 2) ; real=$(echo $i | cut -d ':' -f 3) ; fil=$(echo $form | sed 's/CTLF.*/CTLF.out/') ; echo "sed -i -e \"/$form $exp/$form $real/\" $fil" ; done
 sed -i -e "/DrinkVendingMachine-COL-76-CTLFireability-15 TRUE/DrinkVendingMachine-COL-76-CTLFireability-15 FALSE/" DrinkVendingMachine-COL-76-CTLF.out
 sed -i -e "/DrinkVendingMachine-COL-98-CTLFireability-00 TRUE/DrinkVendingMachine-COL-98-CTLFireability-00 FALSE/" DrinkVendingMachine-COL-98-CTLF.out
@@ -113,6 +114,9 @@ sed -i -e "/GlobalResAllocation-COL-10-CTLFireability-10 FALSE/GlobalResAllocati
 sed -i -e "/GlobalResAllocation-COL-10-CTLFireability-11 FALSE/GlobalResAllocation-COL-10-CTLFireability-11 TRUE/" GlobalResAllocation-COL-10-CTLF.out
 sed -i -e "/GlobalResAllocation-COL-11-CTLFireability-07 TRUE/GlobalResAllocation-COL-11-CTLFireability-07 FALSE/" GlobalResAllocation-COL-11-CTLF.out
 sed -i -e "/GlobalResAllocation-COL-11-CTLFireability-08 FALSE/GlobalResAllocation-COL-11-CTLFireability-08 TRUE/" GlobalResAllocation-COL-11-CTLF.out
+sed -i -e "/PermAdmissibility-COL-05-CTLFireability-09 TRUE/PermAdmissibility-COL-05-CTLFireability-09 FALSE/" PermAdmissibility-COL-05-CTLF.out
+sed -i -e "/TokenRing-COL-015-CTLFireability-03 TRUE/TokenRing-COL-015-CTLFireability-03 FALSE/" TokenRing-COL-015-CTLF.out
+sed -i -e "/TokenRing-COL-015-CTLFireability-12 FALSE/TokenRing-COL-015-CTLFireability-12 TRUE/" TokenRing-COL-015-CTLF.out
 
 mv *.out oracle/
 
