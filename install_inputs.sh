@@ -87,9 +87,12 @@ sed -i -e "s/StableMarking TRUE/StableMarking FALSE/" ViralEpidemic-PT-S16D2C4A0
 # built using this line of shell 
 # grep estFail *out | grep CTL | grep COL > fails.txt
 # for i in $(cat fails.txt | cut -d ' ' -f 8-12 | sed s/\'//g | sed 's/)//g' | sed 's#/##g' | sed 's/  / /g' | sed 's/ /:/g') ; do form=$(echo $i | cut -d ':' -f 1) ; exp=$(echo $i | cut -d ':' -f 2) ; real=$(echo $i | cut -d ':' -f 3) ; fil=$(echo $form | sed 's/CTLF.*/CTLF.out/') ; echo "sed -i -e \"s/$form $exp/$form $real/\" $fil" ; done
+sed -i -e "s/BART-COL-020-CTLFireability-05 TRUE/BART-COL-020-CTLFireability-05 FALSE/" BART-COL-020-CTLF.out
+sed -i -e "s/BART-COL-030-CTLFireability-10 FALSE/BART-COL-030-CTLFireability-10 TRUE/" BART-COL-030-CTLF.out
 sed -i -e "s/DrinkVendingMachine-COL-76-CTLFireability-15 TRUE/DrinkVendingMachine-COL-76-CTLFireability-15 FALSE/" DrinkVendingMachine-COL-76-CTLF.out
 sed -i -e "s/DrinkVendingMachine-COL-98-CTLFireability-00 TRUE/DrinkVendingMachine-COL-98-CTLFireability-00 FALSE/" DrinkVendingMachine-COL-98-CTLF.out
 sed -i -e "s/DrinkVendingMachine-COL-98-CTLFireability-06 FALSE/DrinkVendingMachine-COL-98-CTLFireability-06 TRUE/" DrinkVendingMachine-COL-98-CTLF.out
+sed -i -e "s/FamilyReunion-COL-L00010M0001C001P001G001-CTLFireability-12 TRUE/FamilyReunion-COL-L00010M0001C001P001G001-CTLFireability-12 FALSE/" FamilyReunion-COL-L00010M0001C001P001G001-CTLF.out
 sed -i -e "s/GlobalResAllocation-COL-06-CTLFireability-06 TRUE/GlobalResAllocation-COL-06-CTLFireability-06 FALSE/" GlobalResAllocation-COL-06-CTLF.out
 sed -i -e "s/GlobalResAllocation-COL-06-CTLFireability-00 TRUE/GlobalResAllocation-COL-06-CTLFireability-00 FALSE/" GlobalResAllocation-COL-06-CTLF.out
 sed -i -e "s/GlobalResAllocation-COL-06-CTLFireability-04 FALSE/GlobalResAllocation-COL-06-CTLFireability-04 TRUE/" GlobalResAllocation-COL-06-CTLF.out
