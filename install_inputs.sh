@@ -51,7 +51,10 @@ fi
 # create oracle files
 mkdir oracle
 # all results available
-cat raw-result-analysis.csv | grep -v StateSpace | cut -d ',' -f2,3,16 | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
+cat raw-result-analysis.csv | grep -v StateSpace | grep -v UpperBound | cut -d ',' -f2,3,16 | sed 's/\s//g' | sort | uniq | ../csv_to_control.pl
+# UpperBounds => do not remove whitespace
+cat raw-result-analysis.csv | grep UpperBound | cut -d ',' -f2,3,16 | sort | uniq | ../csv_to_control.pl
+
  
 # contradict GreatSPN, but confirmed by Tapaal (in Dec 2021) and ITS-Tools
 # consensus is poor in 2021, since only ITS-Tools and GreatSPN could parse it
