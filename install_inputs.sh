@@ -124,6 +124,11 @@ sed -i -e "s/PermAdmissibility-COL-05-CTLFireability-09 TRUE/PermAdmissibility-C
 sed -i -e "s/TokenRing-COL-015-CTLFireability-03 TRUE/TokenRing-COL-015-CTLFireability-03 FALSE/" TokenRing-COL-015-CTLF.out
 sed -i -e "s/TokenRing-COL-015-CTLFireability-12 FALSE/TokenRing-COL-015-CTLFireability-12 TRUE/" TokenRing-COL-015-CTLF.out
 
+# Contradict Tapaal, but this was actually a rare bug, discussed with Jiri+Peter of Tapaal team
+sed -i -e "s/ShieldRVt-PT-030A-CTLCardinality-10 FALSE/ShieldRVt-PT-030A-CTLCardinality-10 TRUE/" ShieldRVt-PT-030A-CTLCardinality-10
+sed -i -e "s/DLCflexbar-PT-6a-CTLFireability-14 FALSE/DLCflexbar-PT-6a-CTLFireability-14 TRUE/" DLCflexbar-PT-6a-CTLF.out
+sed -i -e "s/ShieldPPPt-PT-001B-CTLFireability-07 FALSE/ShieldPPPt-PT-001B-CTLFireability-07 TRUE/" ShieldPPPt-PT-001B-CTLF.out
+
 mv *.out oracle/
 
 #rm -f raw-result-analysis.csv*
